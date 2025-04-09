@@ -1,4 +1,6 @@
-Structure - 
+# 📁 Project Structure
+
+```
 📦 com.yourapp
 │
 ├── core/                    # Shared core modules/utilities
@@ -27,3 +29,4 @@ Structure -
 │   └── YourApp.kt
 │
 └── build.gradle
+```
