@@ -12,27 +12,39 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.videonatics.demo.app.MenuHomePage
+import com.videonatics.demo.app.MenuPageRoute
+import com.videonatics.demo.features.home.presentation.viewmodel.HomeViewModel
 import com.videonatics.demo.ui.theme.DemoTheme
 
 @Composable
-fun HomePage(onPageChange: (String) -> Unit) {
+fun HomePage(viewModel: HomeViewModel = hiltViewModel()) {
+
     Scaffold(
         bottomBar = {
             BottomAppBar {
                 IconButton(onClick = {
-                    onPageChange.invoke("home")
+
+                    viewModel.onPageChange(MenuPageRoute.PAGE_1)
+
                 }) {
                      Icon(Icons.Filled.Home, contentDescription = "Home")
                 }
                 IconButton(onClick = {
-                    onPageChange.invoke("settings")
+
+                    viewModel.onPageChange(MenuPageRoute.PAGE_2)
+
                 }) {
                     Icon(Icons.Filled.Settings, contentDescription = "Settings")
                 }
             }
         }
+
     ){padding ->
-        Box(modifier = Modifier.padding(padding))
+        Box(modifier = Modifier.padding(padding)){
+            MenuHomePage(viewModel.selectedPage)
+        }
     }
 }
 
@@ -40,6 +52,6 @@ fun HomePage(onPageChange: (String) -> Unit) {
 @Composable
 fun HomePreview() {
     DemoTheme {
-        HomePage {}
+        HomePage()
     }
 }
