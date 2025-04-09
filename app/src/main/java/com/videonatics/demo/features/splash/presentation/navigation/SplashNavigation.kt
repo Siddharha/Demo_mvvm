@@ -10,7 +10,7 @@ import com.videonatics.demo.features.splash.presentation.ui.SplashScreen
 fun NavGraphBuilder.splashGraph(navController: NavController) {
     composable(PageRoute.SPLASH.name) { SplashScreen{
         navController.navigate(it){
-            popUpTo(PageRoute.SPLASH.name) { inclusive = true }
+            popUpTo(PageRoute.SPLASH.name) { inclusive = true } //changes
         }
     } }
 }
